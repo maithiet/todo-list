@@ -5,6 +5,7 @@ import {CloseCircleFilled, EditFilled} from '@ant-design/icons';
 function Item({item, index, setListItems, listItems}) {
     const [edit, setEdit] = useState(false)
     const [value, setValue] = useState(null)
+    console.log("render")
     useEffect(() => {
         if (!item || item.replace(/\s+/g, "") === "")
             return
@@ -30,19 +31,20 @@ function Item({item, index, setListItems, listItems}) {
         return (
             <Input.Group compact className={"!mb-2"} key={index}>
                 <Input
+                    className={'!py-[7px] !px-[15px]'}
                     autoFocus={true}
-                    style={{width: 'calc(100% - 60px)'}}
+                    style={{width: 'calc(100% - 59px)'}}
                     value={value}
                     placeholder="Edit"
                     onPressEnter={onEdit}
                     onBlur={onEdit}
                     onChange={(e) => onChange(e)}
                 />
-                <Button onClick={onEdit} ke type="primary">Edit</Button>
+                <Button className={'!h-[38px] w-[60px]'} onClick={onEdit} ke type="primary">Edit</Button>
             </Input.Group>
         )
     return (
-        <div key={index} className={"bg-[#1890ff] text-white mb-2 p-2 relative"}>
+        <div key={index} className={"bg-[#1890ff] text-white mb-2 py-2 px-[15px] relative"}>
             {item}
             <Button onClick={() => setEdit(true)} className={"!absolute right-[45px] top-[4px]"} type="primary"
                     icon={<EditFilled/>}/>
