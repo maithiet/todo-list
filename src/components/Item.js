@@ -6,7 +6,7 @@ import {findIndex} from "lodash";
 function Item({item, setListItems, listItems}) {
     const [edit, setEdit] = useState(false)
     const [value, setValue] = useState(item?.value)
-
+    console.log(item);
     const onChange = (e) => {
         setValue(e.target.value)
     }
