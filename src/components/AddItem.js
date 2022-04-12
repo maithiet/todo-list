@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Input} from "antd";
+import {v4 as uuidv4} from "uuid";
 
 function AddItem({listItems, setListItems}) {
     const [value, setValue] = useState(null)
@@ -9,8 +10,9 @@ function AddItem({listItems, setListItems}) {
     const onAdd = () => {
         if (!value || value.replace(/\s+/g, "") === "")
             return
+        const idItem = uuidv4()
         let newList = [...listItems]
-        newList.push(value.trim())
+        newList.push({value: value.trim(), id: idItem})
         setListItems(newList)
         setValue('')
     }

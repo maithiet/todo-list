@@ -12,7 +12,7 @@ function TodoList(props) {
             <div className={'flex flex-col '}>
                 {
                     listItems.length > 0 && listItems.map((item, index) =>
-                        <Item setListItems={setListItems} listItems={listItems} item={item} index={index}/>
+                        <Item key={item.id} setListItems={setListItems} listItems={listItems} item={item}/>
                     )
                 }
             </div>
