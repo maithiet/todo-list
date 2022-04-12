@@ -3,7 +3,6 @@ import 'antd/dist/antd.min.css'
 import Item from "./Item";
 import AddItem from "./AddItem";
 import Title from "./Title";
-import {Button} from "antd";
 
 function TodoList(props) {
     const [listItems, setListItems] = useState([])
@@ -15,8 +14,8 @@ function TodoList(props) {
     return (
         <div className={"w-[500px] bg-[#fff] mx-auto rounded-md p-5"}>
             <Title count={count}/>
-            <Button onClick={handleChangeCount} type="primary">Click</Button>
-            {count}
+            {/*<Button onClick={handleChangeCount} type="primary">Click</Button>*/}
+            {/*{count}*/}
             <AddItem setListItems={setListItems}/>
             {
                 listItems?.length ? listItems.map((item, index) =>
