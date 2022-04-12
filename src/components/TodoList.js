@@ -1,22 +1,30 @@
 import React, {useState} from 'react';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css'
 import Item from "./Item";
 import AddItem from "./AddItem";
+import Title from "./Title";
+import {Button} from "antd";
 
 function TodoList(props) {
     const [listItems, setListItems] = useState([])
+    const [count, setCount] = useState(0)
+    const handleChangeCount = () => {
+        setCount(count + 1)
+    }
+
     return (
         <div className={"w-[500px] bg-[#fff] mx-auto rounded-md p-5"}>
-            <h2 className={"text-center text-[24px]"}>To do list</h2>
-            <AddItem listItems={listItems} setListItems={setListItems}/>
-            <div className={'flex flex-col '}>
-                {
-                    listItems.length > 0 && listItems.map((item, index) =>
-                        <Item setListItems={setListItems} listItems={listItems} item={item} index={index}/>
+            <Title count={count}/>
+            <Button onClick={handleChangeCount} type="primary">Click</Button>
+            {count}
+            <AddItem setListItems={setListItems}/>
+            {
+                listItems?.length ? listItems.map((item, index) =>
+                        <Item key={item?.id} setListItem={setListItems} item={item}/>
                     )
-                }
-            </div>
-
+                    :
+                    null
+            }
         </div>
     );
 }
